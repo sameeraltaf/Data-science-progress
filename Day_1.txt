@@ -1,0 +1,42 @@
+HyperParameters: 
+
+Definition:
+
+In applied machine learning, tuning the machine learning model’s hyperparameters represent a lucrative opportunity to achieve the best performance as possible.
+
+Parameters VS Hyperparameters:
+
+ *Parameters: 
+   A parameter can be considered to be intrinsic or internal to the model and can be obtained after the model has learned from the data. Examples of parameters are regression coefficients in linear regression, support vectors in support vector machines and weights in neural networks.
+
+ *hyperparameters:
+    A hyperparameter can be considered to be extrinsic or external to the model and can be set arbitrarily by the practitioner. Examples of hyperparameters include the k in k-nearest neighbors, number of trees and maximum number of features in random forest, learning rate and momentum in neural networks, the C and gamma parameters in support vector machines.
+
+____1. n_estimators:
+       *DEFN: number of trees in the descision tree forest.
+       *How much is good enough?:The larger the better, but also the longer it will take to compute
+       *Impact of high/low number of estimators on rf model: The smaller number of trees will result in Underfitting of model respectively.  and higher number results in a specific number of estimators, the different subsamples that are used for fitting the specific decision tree no longer provide an advantage in the averaging process, since many decision trees are now pretty similar and are fit on similar subsamples of the dataset.
+
+____2. Max_depth: default = none
+       *DEFN:It is important to keep in mind that max_depth is not the same thing as depth of a decision tree. max_depth is a way to preprune a decision tree.
+       *Impact of high/low number of estimators on rf model: if a tree is already as pure as possible at a depth, it will not continue to split.
+       *Find the optimum depth? If you ever wonder what the depth of your trained decision tree is, you can use the "get_depth" method.
+       *If none: then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples.
+
+____3. Min_samples_leaf: int or float, default=2
+       *DEFN: The minimum number of samples required to split an internal node
+       *How much is good enough? If INT, then consider min_samples_split as the minimum number.
+                                 If FLOAT,then min_samples_split is a fraction and ceil(min_samples_split * n_samples) are the minimum number of samples for each split.
+       *difference on min_samples_split specifies the minimum number of samples required to split an internal node, while min_samples_leaf specifies the minimum number of samples required to be at a leaf node. For instance, if min_samples_split = 5 , and there are 7 samples at an internal node, then the split is allowed.
+
+____4. Min_samples_split: INT or FLOAT- default = 2 
+       *DEFN: The minimum number of samples required to split an internal node
+       *How much is good enough?: If INT, then consider min_samples_split as the minimum number.
+                                  If FLOAT,then min_samples_split is a fraction and ceil(min_samples_split * n_samples) are the minimum number of samples for each split.
+       *Impact of high/low number of estimators on rf model:
+
+____5. Criterion:(GINI VS ENTROPY) Deafualt = GINI
+       *DEFN: The function to measure the quality of a split. Supported criteria are “gini” for the Gini impurity and “log_loss” or “entropy” 
+       		GINI: The gini impurity measures the frequency at which any element of the dataset will be mislabelled when it is randomly labeled.The minimum value of the Gini Index is 0. This happens when the node is pure, this means that all the contained elements in the node are of one unique class. Therefore, this node will not be split again. Thus, the optimum split is chosen by the features with less Gini Index. Moreover, it gets the maximum value when the probability of the two classes are the same.
+       		ENTROPY/LOgLoss: Entropy is a measure of information that indicates the disorder of the features with the target. Similar to the Gini Index, the optimum split is chosen by the feature with less entropy. It gets its maximum value when the probability of the two classes is the same and a node is pure when the entropy has its minimum value, which is 0: ENTROPYmin  = -1*log(1) = 0 || ENTROPYmax = 0.5*log2(0.5) + 0.5*log2(0.5) = 1
+       *How much is good enough?(what's the difference): Computationally, entropy is more complex since it makes use of logarithms and consequently, the calculation of the Gini Index will be faster.
