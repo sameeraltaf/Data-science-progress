@@ -1,0 +1,54 @@
+________SCORING______METRICS________(precision, recall, confusion metrics and f1 score) 
+
+what do you know about scoring metrics? what can you tell about the scoring metrics in what model? 
+
+____CONFUSION MATRIX_________
+
+DEFN: The confusion matrix is a table that summarizes how successful the classification model is at predicting examples belonging to various classes. One axis of the confusion matrix is the label that the model predicted, and the other axis is the actual label. 
+What should I look for in the classification:     
+
+                                                       A_c_t_u_a_l V_a_l_u_e_s
+                                                  _________Neg_ve_______ Pos_ve____
+                                          P_r_e_d |Pos_ve|      TP  |  FP         |         
+                                                  |------|----------|-------------|
+                                      V_a_l_u_e_s |Neg_ve|_____FN___|____TN_______|
+    
+In above confusion matrix table, TP,TN shows the result that in actually they are one thing and model also predicted that same thing but FP,FN shows the result that in actual they are one thing and model predicted it another thing.
+We can use confusion matrix when we compare different model by looking how well it predicted a true positive(TP) and true negative(TN). If one model predicted a TP and TN very well than other model then we choose this model as our base model.
+
+____PRECISION________________
+
+DEFN:In definition it is define as the actual correct prediction divided by total prediction made by model.
+In simple language let our model predict that out of 10 patient 7 has heart disease and among that predicted 7 patient, only 3 has actual heart disease so in this case precision is 3/7 = 0.428
+                
+
+
+                                        P_r_e_c_i_s_i_o_n = ___TP__      TP: true_positive 
+                                                            TP + FP      FP: false_positive 
+
+In our case true positive(TP) is 3 and false positive(FP) 7-3=4.
+
+____RECALL___________________
+
+DEFN: In an classification problem with two classes, 
+recall is calculated as the number of true positives divided by the total number of true positives and false negatives. In or case of heart disease patient let's suppose there is 7 actual heart patient but our model predict only 5 has heart disease so in this case recall is 5/7=0.714
+
+                                         
+
+                                        R_e_c_a_l_l =       ___TP__    TP: true_positive 
+                                                            TP + FN    FN: false_positive
+                                                    
+
+
+
+                                                    
+
+
+
+                                                    
+
+
+
+                                                    
+
+
